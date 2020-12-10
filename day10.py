@@ -1,22 +1,13 @@
 from sys import argv
 import sys
 import numpy as np
-import math
+import app
 
 def main():
-    if len(argv) != 2:
-        print("Usage: python program input.txt")
-        sys.exit(1)
-    elif ".txt" not in argv[1]:
-        print("Input must be a txt file")
-        sys.exit(1)
-
+    input = app.input()
     adapters = list()
-    
-    with open(argv[1]) as f:
-        input = f.readlines()
-        for line in input:
-           adapters.append(int(line))
+    for line in input:
+        adapters.append(int(line))
     adapters.append(0) #starting from the outlet which is rated 0
     adapters.append(max(adapters)+3) #the built-in adapter is always 3 higher than the highest adapter
     adapters = sorted(adapters)
